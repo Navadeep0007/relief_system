@@ -1,0 +1,38 @@
+{% if deliveries %}
+<table class="table table-striped align-middle">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Donation</th>
+        <th>Request</th>
+        <th>Coordinator</th>
+        <th>Status</th>
+        <th>Pickup</th>
+        <th>Drop-off</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for d in deliveries %}
+        <tr>
+            <td>{{ d.id }}</td>
+            <td>{{ d.donation.title }}</td>
+            <td>{{ d.request.title }}</td>
+            <td>{{ d.coordinator|default:"-" }}</td>
+            <td>{{ d.get_status_display }}</td>
+            <td>{{ d.pickup_time|date:"Y-m-d H:i" }}</td>
+            <td>{{ d.dropoff_time|date:"Y-m-d H:i" }}</td>
+            <td>
+                {% if role == "ADMIN" or role == "COORDINATOR" %}
+                    <a href="{% url 'core:delivery_update_status' d.pk %}"
+                       class="btn btn-sm btn-outline-secondary">Update</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p class="text-muted">No deliveries yet.</p>
+{% endif %}
+

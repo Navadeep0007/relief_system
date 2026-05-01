@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+
+{% block title %}Deliveries{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Deliveries</h1>
+    {% if role == "ADMIN" or role == "COORDINATOR" %}
+        <a href="{% url 'core:delivery_create' %}" class="btn btn-primary">Plan delivery</a>
+    {% endif %}
+</div>
+
+{% include "core/partials/delivery_table.html" with deliveries=deliveries %}
+{% endblock %}
+

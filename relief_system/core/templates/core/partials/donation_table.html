@@ -1,0 +1,32 @@
+{% if donations %}
+<table class="table table-striped align-middle">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Quantity</th>
+        <th>Location</th>
+        <th>Active</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for d in donations %}
+        <tr>
+            <td>{{ d.title }}</td>
+            <td>{{ d.category|default:"-" }}</td>
+            <td>{{ d.quantity }}</td>
+            <td>{{ d.location }}</td>
+            <td>{{ d.is_active|yesno:"Yes,No" }}</td>
+            <td>
+                <a href="{% url 'core:donation_update' d.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'core:donation_toggle_active' d.pk %}" class="btn btn-sm btn-outline-warning">Toggle</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% else %}
+    <p class="text-muted">No donations yet.</p>
+{% endif %}
+

@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block title %}Donations{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Donations</h1>
+    <a href="{% url 'core:donation_create' %}" class="btn btn-primary">New donation</a>
+</div>
+
+{% include "core/partials/donation_table.html" with donations=donations %}
+{% endblock %}
+

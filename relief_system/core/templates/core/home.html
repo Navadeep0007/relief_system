@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+
+{% block title %}Welcome - Emergency Relief{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h1 class="card-title mb-3">Emergency Donation &amp; Relief Management</h1>
+                <p class="card-text">
+                    Coordinate donors, recipients, and logistics teams in one place.
+                    Track donations, requests, and deliveries in real time to ensure fair and transparent relief.
+                </p>
+                <div class="mt-4 d-flex gap-2">
+                    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+                    <a href="{% url 'core:signup' %}" class="btn btn-outline-primary">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

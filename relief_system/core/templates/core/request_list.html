@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block title %}Requests{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Requests</h1>
+    <a href="{% url 'core:request_create' %}" class="btn btn-primary">New request</a>
+</div>
+
+{% include "core/partials/request_table.html" with requests=requests %}
+{% endblock %}
+
